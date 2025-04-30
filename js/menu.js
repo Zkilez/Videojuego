@@ -59,24 +59,17 @@ function startGame() {
   // Redirigir al juego después de la animación
   setTimeout(() => {
     // Redirigir al juego (index.html)
-    window.location.href = "pages/ciberseguridad.html";
+    window.location.href = "pages/juego.html";
   }, 1000)
 }
 
 // Efectos de sonido
 function playHoverSound() {
-  // Aquí podrías implementar un sonido al pasar sobre botones
-  // Por ejemplo, usando la API de Audio:
-  // const hoverSound = new Audio('sounds/hover.mp3');
-  // hoverSound.volume = 0.3;
-  // hoverSound.play();
+  
 }
 
 function playClickSound() {
-  // Aquí podrías implementar un sonido al hacer clic
-  // const clickSound = new Audio('sounds/click.mp3');
-  // clickSound.volume = 0.5;
-  // clickSound.play();
+  
 }
 
 // Añadir animación de salida
