@@ -1,0 +1,530 @@
+/* Estilos base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+@font-face {
+  font-family: "PixelFont";
+  src: url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: "PixelFont", "Press Start 2P", monospace;
+  background-color: #0a0a2a;
+  color: #fff;
+}
+
+/* Contenedor principal */
+#menu-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #0a0a2a 0%, #1a1a4a 100%);
+  overflow: hidden;
+}
+
+/* Estrellas de fondo */
+#stars-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.star {
+  position: absolute;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Rejilla de fondo */
+#grid-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 2;
+  perspective: 1000px;
+  transform: rotateX(60deg);
+  transform-style: preserve-3d;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 40px;
+  }
+}
+
+/* Circuitos flotantes */
+.floating-circuit {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  border: 2px solid rgba(138, 95, 255, 0.3);
+  z-index: 3;
+}
+
+.floating-circuit::before,
+.floating-circuit::after {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 255, 255, 0.2);
+  top: 10%;
+  left: 10%;
+}
+
+.floating-circuit::after {
+  width: 60%;
+  height: 60%;
+  top: 20%;
+  left: 20%;
+  border-color: rgba(255, 94, 98, 0.2);
+}
+
+.floating-circuit.left {
+  left: -100px;
+  top: 20%;
+  animation: floatCircuit 15s infinite alternate;
+}
+
+.floating-circuit.right {
+  right: -100px;
+  bottom: 20%;
+  animation: floatCircuit 18s infinite alternate-reverse;
+}
+
+@keyframes floatCircuit {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-50px) rotate(180deg);
+  }
+}
+
+/* Holograma del planeta */
+.planet-hologram {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 4;
+}
+
+.planet-core {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, #8a5fff 0%, #4a3a8c 70%, transparent 100%);
+  border-radius: 50%;
+  top: 50px;
+  left: 50px;
+  box-shadow: 0 0 30px rgba(138, 95, 255, 0.5);
+  animation: pulseCore 4s infinite alternate;
+}
+
+@keyframes pulseCore {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+.planet-ring {
+  position: absolute;
+  width: 180px;
+  height: 40px;
+  border: 2px solid rgba(0, 255, 255, 0.7);
+  border-radius: 50%;
+  top: 80px;
+  left: 10px;
+  transform: rotateX(75deg);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+  animation: rotateRing 20s linear infinite;
+}
+
+@keyframes rotateRing {
+  0% {
+    transform: rotateX(75deg) rotateZ(0deg);
+  }
+  100% {
+    transform: rotateX(75deg) rotateZ(360deg);
+  }
+}
+
+.planet-orbit {
+  position: absolute;
+  width: 180px;
+  height: 180px;
+  border: 1px dashed rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  top: 10px;
+  left: 10px;
+  animation: rotateOrbit 30s linear infinite;
+}
+
+@keyframes rotateOrbit {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.planet-satellite {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #00ffff;
+  border-radius: 50%;
+  top: 10px;
+  left: 90px;
+  box-shadow: 0 0 10px #00ffff;
+  animation: orbitSatellite 10s linear infinite;
+}
+
+@keyframes orbitSatellite {
+  0% {
+    transform: rotate(0deg) translateX(80px) rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg) translateX(80px) rotate(-360deg);
+  }
+}
+
+/* Título del juego */
+.title-container {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.game-title {
+  font-size: 48px;
+  color: #00ffff;
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.7);
+  letter-spacing: 2px;
+  animation: glowTitle 3s infinite alternate;
+}
+
+@keyframes glowTitle {
+  0% {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.7);
+  }
+  100% {
+    text-shadow: 0 0 30px rgba(0, 255, 255, 1);
+  }
+}
+
+.title-underline {
+  width: 80%;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #00ffff, transparent);
+  margin: 15px auto;
+  position: relative;
+}
+
+.title-underline::before,
+.title-underline::after {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: #00ffff;
+  border-radius: 50%;
+  top: -3px;
+}
+
+.title-underline::before {
+  left: 20%;
+}
+
+.title-underline::after {
+  right: 20%;
+}
+
+.game-subtitle {
+  font-size: 18px;
+  color: #8a5fff;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* Opciones del menú */
+.menu-options {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menu-button {
+  position: relative;
+  background: linear-gradient(135deg, #3a2a7c 0%, #4a3a8c 100%);
+  color: #00ffff;
+  border: 2px solid #00ffff;
+  border-radius: 5px;
+  padding: 20px 60px;
+  font-family: "PixelFont", "Press Start 2P", monospace;
+  font-size: 24px;
+  cursor: pointer;
+  margin: 10px 0;
+  overflow: hidden;
+  transition: all 0.3s;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.menu-button:hover {
+  background: linear-gradient(135deg, #4a3a8c 0%, #5a4a9c 100%);
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+}
+
+.menu-button:active {
+  transform: scale(0.98);
+}
+
+.button-glow {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 255, 255, 0.3), transparent);
+  animation: buttonGlow 3s infinite;
+}
+
+@keyframes buttonGlow {
+  0% {
+    left: -100%;
+  }
+  50%,
+  100% {
+    left: 100%;
+  }
+}
+
+.button-text {
+  position: relative;
+  z-index: 2;
+}
+
+/* Flujos de datos */
+.data-stream {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  z-index: 3;
+  overflow: hidden;
+}
+
+.data-stream::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, transparent, #00ffff, transparent);
+  animation: dataFlow 3s infinite;
+}
+
+.data-stream.left {
+  left: 20%;
+}
+
+.data-stream.right {
+  right: 20%;
+}
+
+@keyframes dataFlow {
+  0% {
+    top: -50%;
+  }
+  100% {
+    top: 100%;
+  }
+}
+
+/* Decoraciones de esquina */
+.corner-decoration {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  z-index: 5;
+}
+
+.corner-decoration::before,
+.corner-decoration::after {
+  content: "";
+  position: absolute;
+  background: #00ffff;
+}
+
+.corner-decoration::before {
+  width: 3px;
+  height: 50px;
+}
+
+.corner-decoration::after {
+  width: 50px;
+  height: 3px;
+}
+
+.corner-decoration.top-left {
+  top: 20px;
+  left: 20px;
+}
+
+.corner-decoration.top-left::before,
+.corner-decoration.top-left::after {
+  top: 0;
+  left: 0;
+}
+
+.corner-decoration.top-right {
+  top: 20px;
+  right: 20px;
+}
+
+.corner-decoration.top-right::before {
+  top: 0;
+  right: 0;
+}
+
+.corner-decoration.top-right::after {
+  top: 0;
+  right: 0;
+}
+
+.corner-decoration.bottom-left {
+  bottom: 20px;
+  left: 20px;
+}
+
+.corner-decoration.bottom-left::before {
+  bottom: 0;
+  left: 0;
+}
+
+.corner-decoration.bottom-left::after {
+  bottom: 0;
+  left: 0;
+}
+
+.corner-decoration.bottom-right {
+  bottom: 20px;
+  right: 20px;
+}
+
+.corner-decoration.bottom-right::before {
+  bottom: 0;
+  right: 0;
+}
+
+.corner-decoration.bottom-right::after {
+  bottom: 0;
+  right: 0;
+}
+
+/* Animación de entrada */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title-container {
+  animation: fadeIn 1s ease-out;
+}
+
+.menu-options {
+  animation: fadeIn 1s ease-out 0.3s forwards;
+  opacity: 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .game-title {
+    font-size: 32px;
+  }
+
+  .game-subtitle {
+    font-size: 14px;
+  }
+
+  .menu-button {
+    padding: 15px 40px;
+    font-size: 18px;
+  }
+
+  .planet-hologram {
+    width: 150px;
+    height: 150px;
+    right: 5%;
+  }
+
+  .planet-core {
+    width: 75px;
+    height: 75px;
+    top: 37.5px;
+    left: 37.5px;
+  }
+
+  .planet-ring {
+    width: 135px;
+    height: 30px;
+    top: 60px;
+    left: 7.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-title {
+    font-size: 24px;
+  }
+
+  .planet-hologram {
+    display: none;
+  }
+
+  .floating-circuit {
+    width: 200px;
+    height: 200px;
+  }
+}

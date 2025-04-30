@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planeta Ciberseguridad - Batalla contra el Jefe</title>
+    <link rel="stylesheet" href="../css/juego.css">
+</head>
+<body>
+    <div id="game-container">
+        <div id="planet-background"></div>
+        <div id="terrain"></div>
+        <div id="ship"></div>
+        <div id="boss" style="display: none;">
+            <div class="boss-body"></div>
+            <div class="boss-core"></div>
+            <div class="boss-eye left"></div>
+            <div class="boss-eye right"></div>
+            <div class="boss-weapon top"></div>
+            <div class="boss-weapon bottom"></div>
+            <div class="boss-weapon left"></div>
+            <div class="boss-weapon right"></div>
+            <div class="boss-shield"></div>
+        </div>
+    </div>
+
+    <div id="ui">
+        <h1>PLANETA CIBERSEGURIDAD</h1>
+        <p>ESTADO: <span id="status">SEGURO</span></p>
+        <p>ESCUDO: <span id="shield-status">100%</span></p>
+        <p>DISPAROS: <span id="shot-count">0</span></p>
+        <p>VELOCIDAD: <span id="speed">0</span> km/s</p>
+    </div>
+
+    <div id="score-display">
+        <p>PUNTUACIÓN: <span id="score-value">0</span></p>
+    </div>
+
+    <div id="boss-name">MALWARE PRIME</div>
+    <div id="boss-health-container">
+        <div id="boss-health-bar"></div>
+    </div>
+    <div class="boss-phase-indicator">
+        <div class="phase-dot active"></div>
+        <div class="phase-dot"></div>
+        <div class="phase-dot"></div>
+    </div>
+
+    <div id="controls">
+        <button class="control-btn" id="scan-btn">ESCANEAR (S)</button>
+        <button class="control-btn" id="fire-btn">DISPARAR (ESPACIO)</button>
+        <button class="control-btn" id="pause-btn">PAUSAR (P)</button>
+        <button class="control-btn" id="scoreboard-btn">PUNTUACIONES</button>
+    </div>
+
+    <div class="alert" id="alert-message">¡ALERTA! JEFE DETECTADO</div>
+    <div id="victory-message">
+        ¡VICTORIA!
+        <p>Has derrotado a MALWARE PRIME</p>
+        <p>El planeta ciberseguridad está a salvo</p>
+        <button id="victory-restart-btn" class="restart-btn control-btn">VOLVER A JUGAR</button>
+    </div>
+
+    <div id="game-over">
+        GAME OVER
+        <p>Tu nave ha sido destruida</p>
+        <p>El planeta ciberseguridad está en peligro</p>
+        <button id="gameover-restart-btn" class="restart-btn control-btn">REINICIAR</button>
+    </div>
+
+    <div id="pause-menu">
+        <h2>JUEGO PAUSADO</h2>
+        <p>Presiona P o el botón para continuar</p>
+        <button id="resume-btn">CONTINUAR</button>
+    </div>
+
+    <div id="question-container">
+        <h2 id="question-title">DESAFÍO DE CIBERSEGURIDAD</h2>
+        <p id="question-text">Pregunta aquí...</p>
+        <div id="answer-options">
+            <!-- Las opciones se generarán dinámicamente -->
+        </div>
+        <p id="answer-feedback"></p>
+        <button id="continue-btn">CONTINUAR</button>
+    </div>
+
+    <!-- Formulario para guardar puntuación -->
+    <div id="score-form">
+        <h2>¡GUARDA TU PUNTUACIÓN!</h2>
+        <p>Tu puntuación: <span id="final-score">0</span></p>
+        <input type="text" id="player-name" placeholder="Ingresa tu nombre" maxlength="15">
+        <button id="save-score-btn">GUARDAR</button>
+    </div>
+
+    <!-- Tabla de puntuaciones -->
+    <div id="scoreboard-container">
+        <h2>MEJORES PUNTUACIONES</h2>
+        <ul id="scoreboard-list">
+            <!-- Las puntuaciones se generarán dinámicamente -->
+        </ul>
+        <button id="close-scoreboard-btn">CERRAR</button>
+    </div>
+
+    <!-- Pantalla de carga -->
+    <div id="loading-screen">
+        <div id="loading-text">Iniciando juego... 0%</div>
+        <div id="loading-bar">
+            <div id="loading-bar-progress"></div>
+        </div>
+    </div>
+
+    <script src="../js/juego.js"></script>
+</body>
+</html>
